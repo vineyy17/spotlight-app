@@ -1,14 +1,14 @@
-import { StyleSheet, Dimensions } from "react-native";
+import { StyleSheet, Dimensions, Platform } from "react-native";
 import { COLORS } from "@/constants/theme";
 
-const { width } = Dimensions.get("window");
+const { width, height } = Dimensions.get("window");
 
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: COLORS.background,
   },
-  contentContainer: {
+  flexContainer: {
     flex: 1,
   },
   header: {
@@ -19,6 +19,8 @@ export const styles = StyleSheet.create({
     paddingVertical: 12,
     borderBottomWidth: 0.5,
     borderBottomColor: COLORS.surface,
+    backgroundColor: COLORS.background, // Ensure header has background
+    zIndex: 10, // Keep header on top
   },
   headerTitle: {
     fontSize: 18,
@@ -56,18 +58,10 @@ export const styles = StyleSheet.create({
     color: COLORS.grey,
     fontSize: 16,
   },
-  content: {
-    flex: 1,
-  },
-  scrollContent: {
-    flexGrow: 1,
-  },
   imageSection: {
     width: width,
-    height: width,
     backgroundColor: COLORS.surface,
-    justifyContent: "center",
-    alignItems: "center",
+    position: "relative", // Ensure stable layout
   },
   previewImage: {
     width: "100%",
@@ -91,6 +85,7 @@ export const styles = StyleSheet.create({
   },
   inputSection: {
     padding: 16,
+    backgroundColor: COLORS.background, // Ensure input area has background
     flex: 1,
   },
   captionContainer: {
@@ -108,6 +103,8 @@ export const styles = StyleSheet.create({
     color: COLORS.white,
     fontSize: 16,
     paddingTop: 8,
-    minHeight: 40,
+    minHeight: 80,
+    maxHeight: 120,
+    textAlignVertical: "top", // Better alignment on Android
   },
 });
